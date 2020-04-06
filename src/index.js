@@ -4,14 +4,13 @@ import { Provider } from "react-redux";
 
 import App from "./App";
 import Main from "./Main";
-import configureStore from "./configureStore";
 
-const store = configureStore();
+import store from "./redux/store";
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Main />
   </Provider>,
   rootElement
 );
