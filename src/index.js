@@ -1,10 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
 import { Provider } from "react-redux";
-import store from "./redux/store";
 
 import App from "./App";
+import Main from "./Main";
+import configureStore from "./configureStore";
+
+const store = configureStore();
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(

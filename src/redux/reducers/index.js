@@ -1,4 +1,10 @@
 import { combineReducers } from "redux";
-import todos from "./todos";
+import { connectRouter } from "connected-react-router";
+import boxes from "./boxes";
 
-export default combineReducers({ todos });
+const rootReducer = history =>
+  combineReducers({
+    boxes: boxes,
+    router: connectRouter(history)
+  });
+export default rootReducer;

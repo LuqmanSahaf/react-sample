@@ -1,26 +1,26 @@
-.todo-app {
+.box-app {
   font-family: sans-serif;
 }
 
-/** add todo **/
-.add-todo {
+/** add box **/
+.add-box {
   margin-left: 0.5rem;
 }
 
-/** todo list **/
-.todo-list {
+/** box list **/
+.box-list {
   margin-top: 1rem;
   text-align: left;
   list-style: none;
 }
 
-/** todo item **/
-.todo-item {
+/** box item **/
+.box-item {
   font-family: monospace;
   cursor: pointer;
   line-height: 1.5;
 }
-.todo-item__text--completed {
+.box-item__text--completed {
   text-decoration: line-through;
   color: lightgray;
 }
