@@ -26,7 +26,6 @@ export default function(state = initialState, action) {
     }
     case FETCH_BOXES_SUCCESS: {
       const boxes = action.payload;
-      console.log(boxes);
       return {
         allIds: boxes.map(box => box.id),
         byIds: boxes.reduce(function(map, obj) {
@@ -37,7 +36,6 @@ export default function(state = initialState, action) {
     }
     case ADD_BOX_SUCCESS: {
       const box = action.payload;
-      console.log(box);
       return {
         ...state,
         allIds: [...state.allIds, box.id],

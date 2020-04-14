@@ -1,13 +1,12 @@
 import React, { Component } from "react";
-import BoxList from "./components/BoxList";
-import "./styles.css";
-import { fetchBoxes, fetchCountries } from "./redux/actions";
+import BoxList from "./BoxList";
+import "../styles.css";
+import { fetchBoxes } from "../redux/actions";
 import { connect } from "react-redux";
 
 class ListBoxes extends Component {
   componentDidMount() {
-    this.props.fetchBoxes();
-    this.props.fetchCountries();
+    this.props.fetchBoxes()
   }
 
   render() {
@@ -23,7 +22,6 @@ class ListBoxes extends Component {
 export default connect(
   null,
   {
-    fetchBoxes: fetchBoxes,
-    fetchCountries: fetchCountries
+    fetchBoxes: fetchBoxes
   }
 )(ListBoxes);

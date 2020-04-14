@@ -3,16 +3,26 @@ import { connect } from "react-redux";
 import { addBox } from "../redux/actions";
 import ColorPicker from "./ColorPicker";
 
+
+const mapStateToProps = state => {
+  const countries = Object.keys(state.countries).map(function(name, index){return name});
+  return { countries };
+};
+
 class AddBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       name: "",
       weight: 0.0,
+      displayColorPicker: false,
       color: {
-        r: 230,
-        g: 32,
-        b: 121
+        rgb: {
+          r: "241",
+          g: "112",
+          b: "19",
+          a: "1"
+        }
       },
       country: "Sweden"
     };
@@ -28,7 +38,7 @@ class AddBox extends React.Component {
   };
 
   handleAddBox = () => {
-    const c = this.state.color;
+    const c = this.state.color.rgb;
     const box = {
       name: this.state.name,
       weight: this.state.weight,
@@ -39,12 +49,16 @@ class AddBox extends React.Component {
     this.setState({
       name: "",
       weight: 0.0,
+      displayColorPicker: false,
       color: {
-        r: 230,
-        g: 32,
-        b: 121
+        rgb: {
+          r: "241",
+          g: "112",
+          b: "19",
+          a: "1"
+        }
       },
-      country: "China"
+      country: "Sweden"
     });
   };
 
@@ -53,7 +67,7 @@ class AddBox extends React.Component {
   };
 
   updateColor = color => {
-    console.log(color);
+    this.setState({ color });
   };
 
   render() {
@@ -76,7 +90,7 @@ class AddBox extends React.Component {
         />
         <br />
         <br />
-        Color: <ColorPicker onChange={this.updateColor} />
+        Color: <ColorPicker updateColor={this.updateColor} />
         <br />
         <br />
         <label>
@@ -85,10 +99,9 @@ class AddBox extends React.Component {
             value={this.state.country}
             onChange={e => this.updateCountry(e.target.value)}
           >
-            <option value="Sweden">Sweden</option>
-            <option value="China">China</option>
-            <option value="Australia">Australia</option>
-            <option value="Brazil">Brazil</option>
+            {this.props.countries.map(country => (
+              <option key={country} value={country}>{country}</option>
+            ))};
           </select>
         </label>
         <br />
@@ -102,7 +115,7 @@ class AddBox extends React.Component {
 }
 
 export default connect(
-  null,
+  mapStateToProps,
   { addBox }
 )(AddBox);
 // export default AddBox;

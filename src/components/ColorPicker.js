@@ -5,10 +5,12 @@ class ColorPicker extends React.Component {
   state = {
     displayColorPicker: false,
     color: {
-      r: "241",
-      g: "112",
-      b: "19",
-      a: "1"
+      rgb: {
+        r: "241",
+        g: "112",
+        b: "19",
+        a: "1"
+      }
     }
   };
 
@@ -17,10 +19,7 @@ class ColorPicker extends React.Component {
   };
 
   handleChange = color => {
-    this.setState({
-      color: color.rgb
-    });
-    console.log(this.state);
+    this.setState({ color });
   };
 
   handleClose = () => {
@@ -45,7 +44,7 @@ class ColorPicker extends React.Component {
         {this.state.displayColorPicker ? (
           <div style={popover}>
             <div style={cover} onClick={this.handleClose} />
-            <SketchPicker disableAlpha onChangeComplete={this.handleChange} />
+            <SketchPicker disableAlpha color={this.state.color} onChange={this.handleChange} onChangeComplete={this.props.updateColor} />
           </div>
         ) : null}
       </span>

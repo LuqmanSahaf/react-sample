@@ -1,6 +1,6 @@
 import React from "react";
-import AddBox from "./components/AddBox";
-import "./styles.css";
+import AddBox from "./AddBox";
+import "../styles.css";
 
 export default function AddBoxes() {
   return (
