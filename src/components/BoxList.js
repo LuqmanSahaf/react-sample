@@ -3,15 +3,19 @@ import { connect } from "react-redux";
 import Box from "./Box";
 // import { getBoxes } from "../redux/selectors";
 import { getBoxes } from "../redux/selectors";
+import SimpleTable from "./Table";
 
 const BoxList = ({ boxes }) => (
-  <ul className="box-list">
-    {boxes && boxes.length
-      ? boxes.map((box, index) => {
-          return <Box key={`box-${box.id}`} box={box} />;
-        })
-      : "No boxes, yay!"}
-  </ul>
+  <div>
+    <ul className="box-list">
+      {boxes && boxes.length
+        ? boxes.map((box, index) => {
+            return <Box key={`box-${box.id}`} box={box} />;
+          })
+        : "No boxes, yay!"}
+    </ul>
+    <SimpleTable rows={boxes} />
+  </div>
 );
 
 // const mapStateToProps = state => {

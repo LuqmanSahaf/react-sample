@@ -6,9 +6,9 @@ import AddBoxes from "./AddBoxes";
 // import store from "./redux/store";
 import { Route, Link, HashRouter as Router } from "react-router-dom";
 
-const Main = ({ history }) => {
+const Main = () => {
   return (
-    <Router history={history}>
+    <Router>
       <div>
         <h1>Box App</h1>
         <ul className="header">
