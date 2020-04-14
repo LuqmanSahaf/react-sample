@@ -9,6 +9,11 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
 class SimpleTable extends React.Component {
+  calculateCost({ weight, country }) {
+    const cost = this.props.countries[country].multiplier * weight;
+    return Math.round((cost + Number.EPSILON) * 100) / 100;
+  }
+
   render() {
     return (
       <TableContainer component={Paper}>
@@ -32,7 +37,7 @@ class SimpleTable extends React.Component {
                   align="right"
                   style={{ backgroundColor: `rgb(${row.color})` }}
                 />
-                <TableCell align="right">{row.cost}</TableCell>
+                <TableCell align="right">{this.calculateCost(row)}</TableCell>
               </TableRow>
             ))}
           </TableBody>

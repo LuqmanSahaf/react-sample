@@ -1,8 +1,7 @@
 import {
-  // ADD_BOX,
-  TOGGLE_BOX,
   FETCH_BOXES_SUCCESS,
-  ADD_BOX_SUCCESS
+  ADD_BOX_SUCCESS,
+  FETCH_COUNTRIES_SUCCESS
 } from "./actionTypes";
 // import { get, post } from "axios";
 
@@ -18,11 +17,6 @@ export const addBox = box => {
   };
 };
 
-export const toggleBox = id => ({
-  type: TOGGLE_BOX,
-  payload: { id }
-});
-
 export const fetchBoxes = () => {
   return dispatch => {
     getBoxes()
@@ -36,9 +30,24 @@ export const fetchBoxes = () => {
   };
 };
 
+export const fetchCountries = () => {
+  return dispatch => {
+    getCountries()
+      .then(res => {
+        dispatch(fetchCountriesSuccess(res.data));
+      })
+      .catch(err => console.log(err.message));
+  };
+};
+
 const fetchBoxesSuccess = boxes => ({
   type: FETCH_BOXES_SUCCESS,
   payload: boxes
+});
+
+const fetchCountriesSuccess = countries => ({
+  type: FETCH_COUNTRIES_SUCCESS,
+  payload: countries
 });
 
 const addBoxSuccess = box => ({
@@ -86,6 +95,20 @@ const postBox = box => {
         country: box.country,
         completed: false
       }
+    };
+  });
+};
+
+const getCountries = () => {
+  return new Promise(resolve => setTimeout(resolve, 500)).then(() => {
+    console.log("inside getCountries");
+    return {
+      data: [
+        { name: "Sweden", multiplier: 1.3 },
+        { name: "China", multiplier: 4 },
+        { name: "Australia", multiplier: 8.6 },
+        { name: "Brazil", multiplier: 7.2 }
+      ]
     };
   });
 };

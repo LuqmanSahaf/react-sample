@@ -23,7 +23,8 @@ class AddBox extends React.Component {
   };
 
   updateWeight = weight => {
-    this.setState({ weight });
+    const new_weight = weight < 0 ? 0 : weight;
+    this.setState({ weight: new_weight });
   };
 
   handleAddBox = () => {
@@ -67,6 +68,9 @@ class AddBox extends React.Component {
         <br />
         Weight:{" "}
         <input
+          type="number"
+          step="0.01"
+          min="0"
           onChange={e => this.updateWeight(e.target.value)}
           value={this.state.weight}
         />

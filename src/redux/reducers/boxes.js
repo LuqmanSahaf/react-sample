@@ -1,9 +1,4 @@
-import {
-  ADD_BOX,
-  TOGGLE_BOX,
-  FETCH_BOXES_SUCCESS,
-  ADD_BOX_SUCCESS
-} from "../actionTypes";
+import { ADD_BOX, FETCH_BOXES_SUCCESS, ADD_BOX_SUCCESS } from "../actionTypes";
 
 const initialState = {
   allIds: [],
@@ -25,19 +20,6 @@ export default function(state = initialState, action) {
             color,
             country,
             completed: false
-          }
-        }
-      };
-    }
-    case TOGGLE_BOX: {
-      const { id } = action.payload;
-      return {
-        ...state,
-        byIds: {
-          ...state.byIds,
-          [id]: {
-            ...state.byIds[id],
-            completed: !state.byIds[id].completed
           }
         }
       };
